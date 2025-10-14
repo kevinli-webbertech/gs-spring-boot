@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout Source Code') {
             steps {
                 // Checkout the source code from your Git repository
-                git branch: 'main', url: 'https://github.com/your-username/your-spring-boot-repo.git' // Replace with your repo details
+                git branch: 'main', url: 'https://github.com/kevinli-webbertech/gs-spring-boot.git' // Replace with your repo details
             }
         }
 
