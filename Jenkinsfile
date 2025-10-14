@@ -46,6 +46,7 @@ pipeline {
                 branch 'main'
             }
             steps {
+                sh 'ls -aF'
                 echo 'Deploying application...'
                 // Example: copy jar to remote server (optional)
                 // sh 'scp target/*.jar user@server:/path/to/deploy/'
