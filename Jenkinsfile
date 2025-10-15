@@ -17,6 +17,12 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                    sh 'mvn clean test' // Example for a Maven project
+            }
+        }
+
         stage('Build and Package') {
             steps {
                 // Build the Spring Boot application and package it into a JAR
