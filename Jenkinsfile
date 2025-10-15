@@ -1,11 +1,12 @@
 pipeline {
     agent any // Specifies that the pipeline can run on any available agent
 
+    options {
+      skipStagesAfterUnstable()
+    }
+
     tools {
-        // Define the JDK and Maven tools to be used in the pipeline
-        // Ensure these tools are configured in Jenkins Global Tool Configuration
-        jdk 'java-17' // Replace 'java-17' with your configured JDK name
-        maven 'jenkins-maven' // Replace 'jenkins-maven' with your configured Maven name
+         maven 'Maven 3.0.6'
     }
 
     stages {
