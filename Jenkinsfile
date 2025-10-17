@@ -20,13 +20,13 @@ pipeline {
             steps {
                 sh 'git --version'
                 sh 'mvn --version'
-                sh './mvnw clean test' // Example for a Maven project
+                sh 'mvn clean test' // Example for a Maven project
             }
         }
 
         stage('Build and Package') {
             steps {
-                sh './mvnw clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
