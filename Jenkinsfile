@@ -2,25 +2,23 @@ pipeline {
     agent any // Specifies that the pipeline can run on any available agent
 
     options {
-      skipStagesAfterUnstable()
+        skipStagesAfterUnstable()
     }
 
     tools {
-         maven '3.9.11'
+        maven '3.9.11'
     }
 
     stages {
         stage('Checkout Source Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/kevinli-webbertech/gs-spring-boot.git' 
+                checkout scm
             }
         }
 
         stage('Test') {
             steps {
-                sh 'git --version'
-                sh 'mvn --version'
-                sh 'mvn clean test' // Example for a Maven project
+                sh 'mvn clean test'
             }
         }
 
