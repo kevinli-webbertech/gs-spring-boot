@@ -49,4 +49,18 @@
 		</plugins>
 	</build>
 
+	<!-- Points `mvn deploy` at the local Nexus instance. The server id below must match
+	     a <server> entry (with credentials) in the settings.xml used at deploy time;
+	     see the Jenkinsfile's "Deploy to Nexus" stage and the Nexus Lab2 doc. -->
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>
