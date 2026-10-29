@@ -51,15 +51,18 @@
 
 	<!-- Points `mvn deploy` at the local Nexus instance. The server id below must match
 	     a <server> entry (with credentials) in the settings.xml used at deploy time;
-	     see the Jenkinsfile's "Deploy to Nexus" stage and the Nexus Lab2 doc. -->
+	     see the Jenkinsfile's "Deploy to Nexus" stage and the Nexus Lab2 doc.
+	     The host here is the Nexus container name ("nexus"), not "localhost", because
+	     the Jenkins pipeline runs inside its own container; the Nexus Lab2 doc's Step 4
+	     connects both containers to a shared "ci-network" so this name resolves. -->
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
-			<url>http://localhost:8081/repository/maven-releases/</url>
+			<url>http://nexus:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://localhost:8081/repository/maven-snapshots/</url>
+			<url>http://nexus:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
