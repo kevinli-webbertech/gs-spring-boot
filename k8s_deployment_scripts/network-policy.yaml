@@ -1,0 +1,33 @@
+# Kubernetes Pods already share the cluster network. This policy is only enforced
+# by CNI plug-ins that support NetworkPolicy; it explicitly permits required traffic.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ci-and-database-traffic
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: jenkins
+      ports:
+        - protocol: TCP
+          port: 8081
+    - from:
+        - podSelector:
+            matchLabels:
+              app: webapp
+        - podSelector:
+            matchLabels:
+              app: jenkins
+      ports:
+        - protocol: TCP
+          port: 3306
+    - ports:
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 50000
